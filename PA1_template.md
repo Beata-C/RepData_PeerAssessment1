@@ -37,26 +37,6 @@ Calculate number of steps for each day:
 
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 totalSteps <- myData0 %>% group_by(date) %>% summarise(total = sum(steps))
 ```
 
@@ -71,7 +51,7 @@ ggplot(totalSteps, aes(x=total)) + geom_histogram(fill="#69b3a2", color="#e9ecef
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 ## Mean and median number of steps taken each day
 
@@ -108,7 +88,7 @@ Create time series plot:
 ggplot(int, aes(x=interval, y=total)) + geom_line( color="#69b3a2") + xlab("5 min Interval")+ylab("Total Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
 
 ## The 5-minute interval that, on average, contains the maximum number of steps
 
@@ -172,7 +152,7 @@ ggplot(fillSteps, aes(x=total)) + geom_histogram(fill="#69b3a2", color="#e9ecef"
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png)
 
 Mean number of steps:
 
@@ -212,21 +192,7 @@ g1 <- ggplot(subset(myData, day == "Weekend"), aes(x=interval, y=steps)) + geom_
 g2 <- ggplot(subset(myData, day == "Weekday"), aes(x=interval, y=steps)) + geom_line( color="#69b3a2") + xlab("Weekdays")+ylab("Total Number of Steps")
 
 library(gridExtra)
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
-```
-
-```r
 grid.arrange(g1, g2, nrow=2)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png)

@@ -430,7 +430,7 @@ ggplot(totalSteps, aes(x=total)) + geom_histogram(fill=&quot;#69b3a2&quot;, colo
 <p>Strategy for filling in missing values - use mean for same time interval as the missing value.</p>
 <p>Calculate means for each time interval:</p>
 <pre class="r"><code>intMean &lt;- myData0 %&gt;% group_by(interval) %&gt;% summarise(Mean = mean(steps))</code></pre>
-<p>Add new column with means to the original data set(repeated 61 times for 61 days:</p>
+<p>Add new column with means to the original data set(repeated 61 times for 61 days):</p>
 <pre class="r"><code>myData &lt;- mutate(myData, intMean = rep(intMean$Mean, 61)) %&gt;% as.data.frame(myData)</code></pre>
 <p>Fill in the NA’s in steps column with means:</p>
 <pre class="r"><code>myData$steps &lt;- coalesce(myData$steps, myData$intMean)</code></pre>
