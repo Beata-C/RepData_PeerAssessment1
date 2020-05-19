@@ -3,6 +3,7 @@ title: "Reproducible Research: Peer Assessment 1"
 output: 
   html_document:
     keep_md: true
+    fig_caption: yes
 ---
 
 
@@ -141,7 +142,7 @@ Calculate means for each time interval:
 intMean <- myData0 %>% group_by(interval) %>% summarise(Mean = mean(steps))
 ```
 
-Add new column with means to the original data set(repeated 61 times for 61 days:
+Add new column with means to the original data set(repeated 61 times for 61 days):
 
 ```r
 myData <- mutate(myData, intMean = rep(intMean$Mean, 61)) %>% as.data.frame(myData)
